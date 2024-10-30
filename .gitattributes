@@ -1,0 +1,37 @@
+# Normalización de finales de línea
+# Fuerza a Git a utilizar LF (line feed) para los archivos de texto
+*.js   text eol=lf
+*.ts   text eol=lf
+*.css  text eol=lf
+*.html text eol=lf
+*.json text eol=lf
+*.md   text eol=lf
+*.yml  text eol=lf
+*.yaml text eol=lf
+
+# Tratar imágenes como archivos binarios para evitar conflictos de fusión
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.svg  binary
+*.ico  binary
+
+# Archivos de fuentes como binarios
+*.ttf  binary
+*.otf  binary
+*.woff binary
+*.woff2 binary
+
+# Configurar Git LFS para archivos grandes (por ejemplo, ZIP, archivos de vídeo)
+*.zip  filter=lfs diff=lfs merge=lfs -text
+*.mp4  filter=lfs diff=lfs merge=lfs -text
+*.mov  filter=lfs diff=lfs merge=lfs -text
+
+# Ignorar cambios en archivos de compilación o de versión
+dist/* export-ignore
+build/* export-ignore
+version.txt export-ignore
+
+# Forzar comportamiento de fusión para ciertos archivos de configuración
+*.lock merge=ours

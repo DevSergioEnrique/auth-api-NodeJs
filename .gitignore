@@ -1,0 +1,40 @@
+# node_modules: Ignorar dependencias instaladas por npm
+node_modules/
+
+# Logs: Ignorar archivos de registro generados
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Entorno: Ignorar archivos de configuración de entorno
+.env
+
+# Directorios de datos
+*.pid
+*.seed
+*.pid.lock
+
+# Sistemas operativos: Archivos específicos de macOS o Windows
+.DS_Store
+Thumbs.db
+
+# Archivos generados por el editor/IDE
+.vscode/
+.idea/
+*.swp
+
+# Ignorar el archivo de bloqueo de dependencia de TypeScript (si es aplicable)
+tsconfig.tsbuildinfo
+
+# Ignorar la cobertura de pruebas
+coverage/
+
+# Archivos temporales o de caché
+.cache/
+.tmp/
+
+# Si usas PM2 o algún proceso de gestor de procesos
+pids/
+pm2.log
