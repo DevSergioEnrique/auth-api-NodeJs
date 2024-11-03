@@ -10,8 +10,13 @@ const getUserById = async (idUser) => {
     }
 }
 
-const getAllUsers = () => {
-    return `all users reached`;
+const getAllUsers = async () => {
+    try {
+        const user = await userModel.getAllUsers();
+        return user;
+    } catch (error) {
+        throw new Error(`Error fetching users: ${error.message}`);
+    }
 }
 
 const createUser = () => {

@@ -24,16 +24,22 @@ const getUserById = (idUser) => {
     });
 }
 
-const takeAllUsers = () => {
-    const query = 'SELECT * FROM users';
+const getAllUsers = () => {
+    return new Promise((resolve, reject) => {
 
-    connection.query(query, (error, results) => {
-        if (error) {
-            console.error('Query error:', error);
-            return;
-        }
-        console.log('Users selected:', results);
-    });
+        // Definición de consulta sql
+        const query = 'SELECT * FROM users'; // SELECT * FROM users LIMIT 50
+
+        // Ejecución de la consulta
+        connection.query(query, (error, results) => {
+            if (error) {
+                console.error('Query error:', error);
+                reject({message : "Error fetching users" + error});
+            } else {
+                resolve(results); // "results" es un objeto de Promise() que automáticamente es parseado a JSON por Node JS
+            }
+        });
+    })
 }
 
 const insertUser = (newUser) => {
@@ -65,6 +71,6 @@ const updateUser = (idUser) => {
 
 module.exports = {
     getUserById,
-    takeAllUsers,
+    getAllUsers,
     insertUser
 }

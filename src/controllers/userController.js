@@ -10,9 +10,15 @@ const getUserById = async (req, res) => {
     }
 }
 
-const getAllUsers = (req, res) => {
-    const output = userService.getAllUsers();
-    res.send({status: "OK", data: output});
+const getAllUsers = async (req, res) => {
+    try {
+        const output = await userService.getAllUsers();
+        res.send({status: "OK", data: output}); // Express convierte `output` a JSON automáticamente :D
+
+    } catch (error) {
+        res.status(500).send({status: "ERROR", message: "Error finding user"
+        });
+    }
 }
 
 const createUser = (req, res) => {
